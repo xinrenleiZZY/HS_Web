@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>员工打卡记录工时统计系统</title>
     <!-- 引入外部资源 -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -70,7 +70,7 @@
 </head>
 <body class="font-inter bg-light-1 text-dark min-h-screen flex overflow-hidden">
     <!-- 侧边栏导航 -->
-    <aside id="sidebar" class="w-64 bg-white h-screen shadow-sm transition-all duration-300 z-30 flex flex-col">
+    <aside id="sidebar" class="w-64 bg-white h-screen shadow-sm transition-all duration-300 z-30 flex flex-col fixed lg:relative">
         <!-- 品牌标识 -->
         <div class="p-5 border-b border-light-2">
             <div class="flex items-center gap-3">
@@ -109,7 +109,7 @@
     </aside>
 
     <!-- 主内容区 -->
-    <main class="flex-1 flex flex-col overflow-hidden">
+    <main class="flex-1 flex flex-col overflow-hidden lg:ml-64">
         <!-- 顶部导航栏 -->
         <header class="h-16 bg-white border-b border-light-2 flex items-center justify-between px-6 z-20">
             <div class="flex items-center gap-4">
@@ -133,7 +133,7 @@
                 </button>
                 <div class="h-6 w-px bg-light-2"></div>
                 <div class="flex items-center gap-2">
-                    <span class="text-sm font-medium">2023年6月</span>
+                    <span class="text-sm font-medium" id="current-month">2023年6月</span>
                     <i class="fa fa-calendar-o text-dark-2"></i>
                 </div>
             </div>
@@ -164,7 +164,7 @@
                         <div class="flex justify-between items-start mb-4">
                             <div>
                                 <p class="text-dark-2 text-sm">总员工数</p>
-                                <h3 class="text-3xl font-bold mt-1">128</h3>
+                                <h3 class="text-3xl font-bold mt-1">0</h3>
                             </div>
                             <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
                                 <i class="fa fa-users text-primary text-xl"></i>
@@ -181,7 +181,7 @@
                         <div class="flex justify-between items-start mb-4">
                             <div>
                                 <p class="text-dark-2 text-sm">今日出勤</p>
-                                <h3 class="text-3xl font-bold mt-1">96</h3>
+                                <h3 class="text-3xl font-bold mt-1">0</h3>
                             </div>
                             <div class="w-12 h-12 rounded-lg bg-success/10 flex items-center justify-center">
                                 <i class="fa fa-check-circle text-success text-xl"></i>
@@ -198,7 +198,7 @@
                         <div class="flex justify-between items-start mb-4">
                             <div>
                                 <p class="text-dark-2 text-sm">今日迟到</p>
-                                <h3 class="text-3xl font-bold mt-1">8</h3>
+                                <h3 class="text-3xl font-bold mt-1">0</h3>
                             </div>
                             <div class="w-12 h-12 rounded-lg bg-warning/10 flex items-center justify-center">
                                 <i class="fa fa-exclamation-triangle text-warning text-xl"></i>
@@ -215,7 +215,7 @@
                         <div class="flex justify-between items-start mb-4">
                             <div>
                                 <p class="text-dark-2 text-sm">本月加班</p>
-                                <h3 class="text-3xl font-bold mt-1">326h</h3>
+                                <h3 class="text-3xl font-bold mt-1">0h</h3>
                             </div>
                             <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center">
                                 <i class="fa fa-clock-o text-secondary text-xl"></i>
@@ -277,96 +277,12 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-light-2">
-                                <tr class="hover:bg-light-1/50 transition-colors">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center gap-3">
-                                            <img src="https://picsum.photos/id/1012/32/32" alt="员工头像" class="w-8 h-8 rounded-full">
-                                            <span>张三</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">技术部</td>
-                                    <td class="px-6 py-4">上班</td>
-                                    <td class="px-6 py-4">2023-06-15 08:50</td>
-                                    <td class="px-6 py-4">
-                                        <span class="px-2 py-1 bg-success/10 text-success text-xs rounded-full">正常</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <button class="text-primary hover:text-primary/80">详情</button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-light-1/50 transition-colors">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center gap-3">
-                                            <img src="https://picsum.photos/id/1027/32/32" alt="员工头像" class="w-8 h-8 rounded-full">
-                                            <span>李四</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">市场部</td>
-                                    <td class="px-6 py-4">上班</td>
-                                    <td class="px-6 py-4">2023-06-15 09:15</td>
-                                    <td class="px-6 py-4">
-                                        <span class="px-2 py-1 bg-warning/10 text-warning text-xs rounded-full">迟到</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <button class="text-primary hover:text-primary/80">详情</button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-light-1/50 transition-colors">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center gap-3">
-                                            <img src="https://picsum.photos/id/1025/32/32" alt="员工头像" class="w-8 h-8 rounded-full">
-                                            <span>王五</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">人力资源</td>
-                                    <td class="px-6 py-4">下班</td>
-                                    <td class="px-6 py-4">2023-06-14 18:30</td>
-                                    <td class="px-6 py-4">
-                                        <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded-full">加班</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <button class="text-primary hover:text-primary/80">详情</button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-light-1/50 transition-colors">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center gap-3">
-                                            <img src="https://picsum.photos/id/1066/32/32" alt="员工头像" class="w-8 h-8 rounded-full">
-                                            <span>赵六</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">财务部</td>
-                                    <td class="px-6 py-4">上班</td>
-                                    <td class="px-6 py-4">2023-06-15 08:45</td>
-                                    <td class="px-6 py-4">
-                                        <span class="px-2 py-1 bg-success/10 text-success text-xs rounded-full">正常</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <button class="text-primary hover:text-primary/80">详情</button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-light-1/50 transition-colors">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center gap-3">
-                                            <img src="https://picsum.photos/id/1074/32/32" alt="员工头像" class="w-8 h-8 rounded-full">
-                                            <span>孙七</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4">技术部</td>
-                                    <td class="px-6 py-4">下班</td>
-                                    <td class="px-6 py-4">2023-06-14 20:15</td>
-                                    <td class="px-6 py-4">
-                                        <span class="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded-full">加班</span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <button class="text-primary hover:text-primary/80">详情</button>
-                                    </td>
-                                </tr>
+                                <!-- 打卡记录将通过JavaScript动态填充 -->
                             </tbody>
                         </table>
                     </div>
                     <div class="p-4 border-t border-light-2 flex justify-between items-center">
-                        <p class="text-sm text-dark-2">显示 1 到 5 条，共 128 条记录</p>
+                        <p class="text-sm text-dark-2">显示 1 到 5 条，共 0 条记录</p>
                         <div class="flex gap-1">
                             <button class="w-8 h-8 flex items-center justify-center rounded border border-light-2 text-dark-2 hover:border-primary hover:text-primary disabled:opacity-50" disabled>
                                 <i class="fa fa-chevron-left text-xs"></i>
@@ -382,7 +298,7 @@
                 </div>
             </div>
             
-            <!-- 其他页面内容（默认隐藏） -->
+            <!-- 打卡记录页面 -->
             <div id="attendance-page" class="hidden space-y-6">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
@@ -456,10 +372,37 @@
                         </div>
                     </div>
                     
-                    <!-- 表格内容与仪表盘页面的表格类似，此处省略 -->
-                    <div class="p-8 text-center text-dark-2">
-                        <i class="fa fa-table text-4xl mb-4 opacity-30"></i>
-                        <p>打卡记录表格内容将在这里显示</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[640px]">
+                            <thead>
+                                <tr class="bg-light-1">
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">员工姓名</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">部门</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">上班时间</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">下班时间</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">工时</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">状态</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-light-2">
+                                <!-- 打卡记录将通过JavaScript动态填充 -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-4 border-t border-light-2 flex justify-between items-center">
+                        <p class="text-sm text-dark-2">显示 1 到 10 条，共 0 条记录</p>
+                        <div class="flex gap-1">
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-light-2 text-dark-2 hover:border-primary hover:text-primary disabled:opacity-50" disabled>
+                                <i class="fa fa-chevron-left text-xs"></i>
+                            </button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white">1</button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-light-2 hover:border-primary hover:text-primary">2</button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-light-2 hover:border-primary hover:text-primary">3</button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-light-2 text-dark-2 hover:border-primary hover:text-primary">
+                                <i class="fa fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -471,7 +414,7 @@
                         <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-bold">员工管理</h2>
                         <p class="text-dark-2">管理员工信息和档案</p>
                     </div>
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" id="add-employee-btn">
                         <i class="fa fa-plus"></i> 添加员工
                     </button>
                 </div>
@@ -488,10 +431,37 @@
                         </div>
                     </div>
                     
-                    <!-- 员工列表内容将在这里显示 -->
-                    <div class="p-8 text-center text-dark-2">
-                        <i class="fa fa-users text-4xl mb-4 opacity-30"></i>
-                        <p>员工列表内容将在这里显示</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[768px]">
+                            <thead>
+                                <tr class="bg-light-1">
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">员工编号</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">姓名</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">部门</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">职位</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">入职日期</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">状态</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-light-2">
+                                <!-- 员工数据将通过JavaScript动态填充 -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-4 border-t border-light-2 flex justify-between items-center">
+                        <p class="text-sm text-dark-2">显示 1 到 10 条，共 0 条记录</p>
+                        <div class="flex gap-1">
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-light-2 text-dark-2 hover:border-primary hover:text-primary disabled:opacity-50" disabled>
+                                <i class="fa fa-chevron-left text-xs"></i>
+                            </button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white">1</button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-light-2 hover:border-primary hover:text-primary">2</button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-light-2 hover:border-primary hover:text-primary">3</button>
+                            <button class="w-8 h-8 flex items-center justify-center rounded border border-light-2 text-dark-2 hover:border-primary hover:text-primary">
+                                <i class="fa fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -518,12 +488,72 @@
                     </div>
                 </div>
                 
+                <!-- 报表筛选条件 -->
+                <div class="card p-6">
+                    <h3 class="font-bold text-lg mb-4">报表筛选</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">开始日期</label>
+                            <input type="date" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">结束日期</label>
+                            <input type="date" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">部门</label>
+                            <select class="input-field">
+                                <option>所有部门</option>
+                                <option>技术部</option>
+                                <option>市场部</option>
+                                <option>人力资源</option>
+                                <option>财务部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button class="btn btn-primary">
+                            <i class="fa fa-search"></i> 生成报表
+                        </button>
+                    </div>
+                </div>
+                
                 <!-- 报表内容 -->
                 <div class="card p-6">
-                    <!-- 报表内容将在这里显示 -->
-                    <div class="p-8 text-center text-dark-2">
-                        <i class="fa fa-bar-chart text-4xl mb-4 opacity-30"></i>
-                        <p>工时报表内容将在这里显示</p>
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-bold text-lg">员工工时统计报表</h3>
+                        <div class="flex gap-2">
+                            <button class="btn btn-outline text-sm">
+                                <i class="fa fa-print"></i> 打印
+                            </button>
+                            <button class="btn btn-outline text-sm">
+                                <i class="fa fa-file-excel-o"></i> 导出Excel
+                            </button>
+                            <button class="btn btn-outline text-sm">
+                                <i class="fa fa-file-pdf-o"></i> 导出PDF
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-light-1">
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">员工编号</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">姓名</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">部门</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">应出勤天数</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">实际出勤天数</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">总工时(小时)</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">加班工时(小时)</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">迟到次数</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">早退次数</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-light-2">
+                                <!-- 报表数据将通过JavaScript动态填充 -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -542,10 +572,110 @@
                 
                 <!-- 规则设置 -->
                 <div class="card p-6">
-                    <!-- 规则设置内容将在这里显示 -->
-                    <div class="p-8 text-center text-dark-2">
-                        <i class="fa fa-cog text-4xl mb-4 opacity-30"></i>
-                        <p>考勤规则设置内容将在这里显示</p>
+                    <h3 class="font-bold text-lg mb-6">基本考勤规则</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">上班时间</label>
+                            <input type="time" class="input-field" value="09:00">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">下班时间</label>
+                            <input type="time" class="input-field" value="18:00">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">迟到阈值（分钟）</label>
+                            <input type="number" class="input-field" value="15" min="0" max="60">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">早退阈值（分钟）</label>
+                            <input type="number" class="input-field" value="15" min="0" max="60">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">午休开始时间</label>
+                            <input type="time" class="input-field" value="12:00">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">午休结束时间</label>
+                            <input type="time" class="input-field" value="13:00">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">加班开始时间</label>
+                            <input type="time" class="input-field" value="19:00">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">每日标准工时（小时）</label>
+                            <input type="number" class="input-field" value="8" min="0" max="12" step="0.5">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 工作日设置 -->
+                <div class="card p-6">
+                    <h3 class="font-bold text-lg mb-4">工作日设置</h3>
+                    <div class="grid grid-cols-3 md:grid-cols-7 gap-4">
+                        <div class="flex flex-col items-center p-4 border border-light-2 rounded-lg hover:border-primary/30 transition-all">
+                            <span class="text-sm font-medium mb-2">周一</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-light-2 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                        </div>
+                        
+                        <div class="flex flex-col items-center p-4 border border-light-2 rounded-lg hover:border-primary/30 transition-all">
+                            <span class="text-sm font-medium mb-2">周二</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-light-2 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                        </div>
+                        
+                        <div class="flex flex-col items-center p-4 border border-light-2 rounded-lg hover:border-primary/30 transition-all">
+                            <span class="text-sm font-medium mb-2">周三</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-light-2 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                        </div>
+                        
+                        <div class="flex flex-col items-center p-4 border border-light-2 rounded-lg hover:border-primary/30 transition-all">
+                            <span class="text-sm font-medium mb-2">周四</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-light-2 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                        </div>
+                        
+                        <div class="flex flex-col items-center p-4 border border-light-2 rounded-lg hover:border-primary/30 transition-all">
+                            <span class="text-sm font-medium mb-2">周五</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" checked class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-light-2 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                        </div>
+                        
+                        <div class="flex flex-col items-center p-4 border border-light-2 rounded-lg hover:border-primary/30 transition-all">
+                            <span class="text-sm font-medium mb-2">周六</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-light-2 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                        </div>
+                        
+                        <div class="flex flex-col items-center p-4 border border-light-2 rounded-lg hover:border-primary/30 transition-all">
+                            <span class="text-sm font-medium mb-2">周日</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-light-2 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -564,10 +694,82 @@
                 
                 <!-- 系统设置内容 -->
                 <div class="card p-6">
-                    <!-- 系统设置内容将在这里显示 -->
-                    <div class="p-8 text-center text-dark-2">
-                        <i class="fa fa-sliders text-4xl mb-4 opacity-30"></i>
-                        <p>系统设置内容将在这里显示</p>
+                    <h3 class="font-bold text-lg mb-6">基本设置</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">系统名称</label>
+                            <input type="text" class="input-field" value="员工打卡记录工时统计系统">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">日期格式</label>
+                            <select class="input-field">
+                                <option>YYYY-MM-DD</option>
+                                <option>MM-DD-YYYY</option>
+                                <option>DD-MM-YYYY</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">时间格式</label>
+                            <select class="input-field">
+                                <option>24小时制 (HH:MM:SS)</option>
+                                <option>12小时制 (hh:MM:SS AM/PM)</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">数据自动备份</label>
+                            <select class="input-field">
+                                <option>每日备份</option>
+                                <option>每周备份</option>
+                                <option>每月备份</option>
+                                <option>关闭自动备份</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 用户管理 -->
+                <div class="card p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-bold text-lg">用户管理</h3>
+                        <button class="btn btn-primary text-sm">
+                            <i class="fa fa-plus"></i> 添加用户
+                        </button>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-light-1">
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">用户名</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">角色</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">创建时间</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">最后登录</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">状态</th>
+                                    <th class="px-6 py-4 text-left text-sm font-medium text-dark-2">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-light-2">
+                                <tr class="hover:bg-light-1/50 transition-colors">
+                                    <td class="px-6 py-4">admin</td>
+                                    <td class="px-6 py-4">管理员</td>
+                                    <td class="px-6 py-4">2023-01-15 09:30</td>
+                                    <td class="px-6 py-4">2023-06-15 08:45</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-2 py-1 bg-success/10 text-success text-xs rounded-full">活跃</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex gap-2">
+                                            <button class="text-primary hover:text-primary/80">编辑</button>
+                                            <button class="text-danger hover:text-danger/80">删除</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -577,12 +779,67 @@
     <!-- 移动端遮罩层 -->
     <div id="overlay" class="fixed inset-0 bg-black/50 z-20 hidden lg:hidden"></div>
 
+    <!-- 添加员工弹窗 (默认隐藏) -->
+    <div id="add-employee-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl w-full max-w-md mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-light-2 flex justify-between items-center">
+                <h3 class="font-bold text-lg">添加新员工</h3>
+                <button id="close-modal" class="text-dark-2 hover:text-danger">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <form id="add-employee-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">员工编号</label>
+                            <input type="text" class="input-field" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">姓名</label>
+                            <input type="text" class="input-field" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">部门</label>
+                            <select class="input-field" required>
+                                <option value="">请选择部门</option>
+                                <option>技术部</option>
+                                <option>市场部</option>
+                                <option>人力资源</option>
+                                <option>财务部</option>
+                                <option>行政部</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-dark-2 mb-1">职位</label>
+                            <input type="text" class="input-field" required>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-dark-2 mb-1">入职日期</label>
+                            <input type="date" class="input-field" required>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-3 mt-6">
+                        <button type="button" id="cancel-add" class="btn btn-outline">取消</button>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // 设置当前日期
+        // 设置当前日期和月份
         document.addEventListener('DOMContentLoaded', function() {
+            // 设置当前日期
             const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
             const currentDate = new Date().toLocaleDateString('zh-CN', dateOptions);
             document.getElementById('current-date').textContent = currentDate;
+            
+            // 设置当前月份
+            const monthOptions = { year: 'numeric', month: 'long' };
+            const currentMonth = new Date().toLocaleDateString('zh-CN', monthOptions);
+            document.getElementById('current-month').textContent = currentMonth;
             
             // 初始化工时统计图表
             initWorkingHoursChart();
@@ -595,6 +852,9 @@
             
             // 侧边栏切换（移动端）
             setupSidebarToggle();
+            
+            // 添加员工弹窗控制
+            setupEmployeeModal();
         });
         
         // 导航菜单切换
@@ -654,6 +914,42 @@
             if (window.innerWidth < 1024) {
                 sidebar.classList.add('-translate-x-full');
             }
+        }
+        
+        // 添加员工弹窗控制
+        function setupEmployeeModal() {
+            const modal = document.getElementById('add-employee-modal');
+            const openBtn = document.getElementById('add-employee-btn');
+            const closeBtn = document.getElementById('close-modal');
+            const cancelBtn = document.getElementById('cancel-add');
+            const form = document.getElementById('add-employee-form');
+            
+            openBtn.addEventListener('click', function() {
+                modal.classList.remove('hidden');
+            });
+            
+            function closeModal() {
+                modal.classList.add('hidden');
+            }
+            
+            closeBtn.addEventListener('click', closeModal);
+            cancelBtn.addEventListener('click', closeModal);
+            
+            // 点击弹窗外部关闭
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // 表单提交处理
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // 这里添加表单提交逻辑
+                alert('员工添加成功！');
+                closeModal();
+                form.reset();
+            });
         }
         
         // 初始化工时统计图表
