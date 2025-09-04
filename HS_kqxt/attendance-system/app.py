@@ -60,6 +60,14 @@ def main():
         # 显示登录页面
         auth.login_page()
     else:
+        uploaded_file = st.file_uploader("上传考勤Excel", type=["xlsx"])
+        if uploaded_file:
+            from modules.import_excel import import_attendance_from_excel
+            success, msg = import_attendance_from_excel(uploaded_file)
+            if success:
+                st.success(msg)
+            else:
+                st.error(msg)
         # 获取后端数据
         backend_data = get_backend_data()
         # 将后端数据转换为JavaScript变量

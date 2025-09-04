@@ -72,15 +72,6 @@ def login_page():
     # 自定义登录页面样式，确保响应式显示
     st.markdown("""
     <style>
-        .login-container {
-            max-width: 400px;
-            width: 100%;
-            margin: 50px auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
         .login-title {
             text-align: center;
             margin-bottom: 2rem;
